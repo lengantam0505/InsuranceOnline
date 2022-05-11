@@ -1,0 +1,56 @@
+﻿@model IEnumerable<InsuranceOnline.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            @*<a class="breadcrumb-item" asp-area="Admin" asp-controller="Categories" asp-action="Index">Categories List</a>*@
+            <span class="breadcrumb-item active">Category Information</span>
+        </nav>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Created_at</th>
+            <th scope="col">#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.CategoryID</th>
+                    <td>@item.CategoryName</td>
+                    <td>@item.Description</td>
+                    <td>@item.Created_at</td>
+                    <td>
+
+                    </td>
+                    <td>
+                        <a class="btn btn-info m-r-5" asp-area="Admin" asp-controller="Categories" asp-action="Details" asp-route-id="@item.CategoryID">View</a>
+                        <a class="btn btn-warning m-r-5" asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-id="@item.CategoryID">Edit</a>
+                        <a class="btn btn-danger m-r-5" asp-area="Admin" asp-controller="Categories" asp-action="Delete" asp-route-id="@item.CategoryID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+
+
+
+    </tbody>
+</table>
+
